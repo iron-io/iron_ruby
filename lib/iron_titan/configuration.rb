@@ -93,7 +93,7 @@ module IronTitan
 
     def initialize
       @scheme = 'https'
-      @host = '192.168.99.100:8080'
+      @host = 'localhost:8080'
       @base_path = '/v1'
       @api_key = {}
       @api_key_prefix = {}
