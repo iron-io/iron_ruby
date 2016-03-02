@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.name        = "iron_titan"
   s.version     = IronTitan::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = [""]
-  s.email       = [""]
-  s.homepage    = ""
+  s.authors     = ["Travis Reeder"]
+  s.email       = ["travis@iron.io"]
+  s.homepage    = "https://github.com/iron-io/titan_ruby"
   s.summary     = ""
   s.description = ""
   s.license     = ""
