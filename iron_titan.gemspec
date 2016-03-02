@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/iron-io/titan_ruby"
   s.summary     = ""
   s.description = ""
-  s.license     = ""
+  s.license     = "Apache 2.0"
 
 
   s.add_runtime_dependency 'typhoeus', '~> 0.2', '>= 0.2.1'
