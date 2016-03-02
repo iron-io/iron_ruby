@@ -43,7 +43,4 @@ p log
 
 ## Building/testing this Gem
 
-```
-gem build swagger_client.gemspec
-gem install iron_titan-X.Y.Z.gem
-```
+This gem is built from the main Titan repo.
