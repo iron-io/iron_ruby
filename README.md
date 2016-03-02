@@ -43,4 +43,4 @@ p log
 
 ## Building/testing this Gem
 
-This gem is built from the main Titan repo.
+This gem is built from the main [Titan repo](https://github.com/iron-io/titan).
