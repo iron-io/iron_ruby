@@ -17,22 +17,22 @@ require 'iron_titan/version'
 require 'iron_titan/configuration'
 
 # Models
-require 'iron_titan/models/jobs_wrapper'
-require 'iron_titan/models/error_body'
-require 'iron_titan/models/new_jobs_wrapper'
-require 'iron_titan/models/image_wrapper'
-require 'iron_titan/models/log'
-require 'iron_titan/models/images_wrapper'
 require 'iron_titan/models/error'
-require 'iron_titan/models/job_wrapper'
-require 'iron_titan/models/job'
+require 'iron_titan/models/error_body'
 require 'iron_titan/models/image'
+require 'iron_titan/models/image_wrapper'
+require 'iron_titan/models/images_wrapper'
+require 'iron_titan/models/job'
+require 'iron_titan/models/job_wrapper'
+require 'iron_titan/models/jobs_wrapper'
+require 'iron_titan/models/log'
 require 'iron_titan/models/new_job'
+require 'iron_titan/models/new_jobs_wrapper'
 
 # APIs
-require 'iron_titan/api/jobs_api'
-require 'iron_titan/api/images_api'
 require 'iron_titan/api/core_api'
+require 'iron_titan/api/images_api'
+require 'iron_titan/api/jobs_api'
 
 module IronTitan
   class << self

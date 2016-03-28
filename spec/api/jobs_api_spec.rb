@@ -32,6 +32,22 @@ describe 'JobsApi' do
     end
   end
 
+  # unit tests for job_id_cancel_post
+  # Cancel a job.
+  # This will prevent a job from running. TODO: should we attempt to kill a running job?
+  # @param id Job id
+  # @param [Hash] opts the optional parameters
+  # @return [JobWrapper]
+  describe 'job_id_cancel_post test' do
+    it "should work" do
+      # assertion here
+      # should be_a()
+      # should be_nil
+      # should ==
+      # should_not ==
+    end
+  end
+
   # unit tests for job_id_get
   # Gets job by id
   # Gets a job by id.
@@ -39,6 +55,22 @@ describe 'JobsApi' do
   # @param [Hash] opts the optional parameters
   # @return [JobWrapper]
   describe 'job_id_get test' do
+    it "should work" do
+      # assertion here
+      # should be_a()
+      # should be_nil
+      # should ==
+      # should_not ==
+    end
+  end
+
+  # unit tests for job_id_log_get
+  # Get the log of a completed job.
+  # Retrieves the log from log storage.
+  # @param id Job id
+  # @param [Hash] opts the optional parameters
+  # @return [Log]
+  describe 'job_id_log_get test' do
     it "should work" do
       # assertion here
       # should be_a()
@@ -56,38 +88,6 @@ describe 'JobsApi' do
   # @param [Hash] opts the optional parameters
   # @return [JobWrapper]
   describe 'job_id_patch test' do
-    it "should work" do
-      # assertion here
-      # should be_a()
-      # should be_nil
-      # should ==
-      # should_not ==
-    end
-  end
-
-  # unit tests for job_id_cancel_post
-  # Cancel a job.
-  # This will prevent a job from running. TODO: should we attempt to kill a running job?
-  # @param id Job id
-  # @param [Hash] opts the optional parameters
-  # @return [JobWrapper]
-  describe 'job_id_cancel_post test' do
-    it "should work" do
-      # assertion here
-      # should be_a()
-      # should be_nil
-      # should ==
-      # should_not ==
-    end
-  end
-
-  # unit tests for job_id_log_get
-  # Get the log of a completed job.
-  # Retrieves the log from log storage.
-  # @param id Job id
-  # @param [Hash] opts the optional parameters
-  # @return [Log]
-  describe 'job_id_log_get test' do
     it "should work" do
       # assertion here
       # should be_a()
@@ -129,22 +129,6 @@ describe 'JobsApi' do
     end
   end
 
-  # unit tests for jobs_post
-  # Enqueue Job
-  # Enqueues a job.
-  # @param body Array of jobs to post.
-  # @param [Hash] opts the optional parameters
-  # @return [JobsWrapper]
-  describe 'jobs_post test' do
-    it "should work" do
-      # assertion here
-      # should be_a()
-      # should be_nil
-      # should ==
-      # should_not ==
-    end
-  end
-
   # unit tests for jobs_name_get
   # Get job list by name.
   # Gets the next job in the queue, ready for processing.
@@ -154,6 +138,22 @@ describe 'JobsApi' do
   # @option opts [Integer] :n Number of jobs to return.
   # @return [JobsWrapper]
   describe 'jobs_name_get test' do
+    it "should work" do
+      # assertion here
+      # should be_a()
+      # should be_nil
+      # should ==
+      # should_not ==
+    end
+  end
+
+  # unit tests for jobs_post
+  # Enqueue Job
+  # Enqueues a job.
+  # @param body Array of jobs to post.
+  # @param [Hash] opts the optional parameters
+  # @return [JobsWrapper]
+  describe 'jobs_post test' do
     it "should work" do
       # assertion here
       # should be_a()

@@ -20,131 +20,6 @@ module IronTitan
       @api_client = api_client
     end
 
-    # Gets job by id
-    # Gets a job by id.
-    # @param id Job id
-    # @param [Hash] opts the optional parameters
-    # @return [JobWrapper]
-    def job_id_get(id, opts = {})
-      data, status_code, headers = job_id_get_with_http_info(id, opts)
-      return data
-    end
-
-    # Gets job by id
-    # Gets a job by id.
-    # @param id Job id
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(JobWrapper, Fixnum, Hash)>] JobWrapper data, response status code and response headers
-    def job_id_get_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: JobsApi#job_id_get ..."
-      end
-      
-      # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling job_id_get" if id.nil?
-      
-      # resource path
-      local_var_path = "/job/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
-
-      # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'JobWrapper')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: JobsApi#job_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update a job
-    # Typically used to update status on error/completion. TODO: only allow &#39;status&#39; field.
-    # @param id Job id
-    # @param body Job data to post
-    # @param [Hash] opts the optional parameters
-    # @return [JobWrapper]
-    def job_id_patch(id, body, opts = {})
-      data, status_code, headers = job_id_patch_with_http_info(id, body, opts)
-      return data
-    end
-
-    # Update a job
-    # Typically used to update status on error/completion. TODO: only allow &#39;status&#39; field.
-    # @param id Job id
-    # @param body Job data to post
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(JobWrapper, Fixnum, Hash)>] JobWrapper data, response status code and response headers
-    def job_id_patch_with_http_info(id, body, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: JobsApi#job_id_patch ..."
-      end
-      
-      # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling job_id_patch" if id.nil?
-      
-      # verify the required parameter 'body' is set
-      fail "Missing the required parameter 'body' when calling job_id_patch" if body.nil?
-      
-      # resource path
-      local_var_path = "/job/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
-
-      # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(body)
-      
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'JobWrapper')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: JobsApi#job_id_patch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Cancel a job.
     # This will prevent a job from running. TODO: should we attempt to kill a running job?
     # @param id Job id
@@ -205,6 +80,66 @@ module IronTitan
       return data, status_code, headers
     end
 
+    # Gets job by id
+    # Gets a job by id.
+    # @param id Job id
+    # @param [Hash] opts the optional parameters
+    # @return [JobWrapper]
+    def job_id_get(id, opts = {})
+      data, status_code, headers = job_id_get_with_http_info(id, opts)
+      return data
+    end
+
+    # Gets job by id
+    # Gets a job by id.
+    # @param id Job id
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(JobWrapper, Fixnum, Hash)>] JobWrapper data, response status code and response headers
+    def job_id_get_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: JobsApi#job_id_get ..."
+      end
+      
+      # verify the required parameter 'id' is set
+      fail "Missing the required parameter 'id' when calling job_id_get" if id.nil?
+      
+      # resource path
+      local_var_path = "/job/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/json']
+      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'JobWrapper')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: JobsApi#job_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get the log of a completed job.
     # Retrieves the log from log storage.
     # @param id Job id
@@ -261,6 +196,71 @@ module IronTitan
         :return_type => 'Log')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: JobsApi#job_id_log_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a job
+    # Typically used to update status on error/completion. TODO: only allow 'status' field.
+    # @param id Job id
+    # @param body Job data to post
+    # @param [Hash] opts the optional parameters
+    # @return [JobWrapper]
+    def job_id_patch(id, body, opts = {})
+      data, status_code, headers = job_id_patch_with_http_info(id, body, opts)
+      return data
+    end
+
+    # Update a job
+    # Typically used to update status on error/completion. TODO: only allow &#39;status&#39; field.
+    # @param id Job id
+    # @param body Job data to post
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(JobWrapper, Fixnum, Hash)>] JobWrapper data, response status code and response headers
+    def job_id_patch_with_http_info(id, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: JobsApi#job_id_patch ..."
+      end
+      
+      # verify the required parameter 'id' is set
+      fail "Missing the required parameter 'id' when calling job_id_patch" if id.nil?
+      
+      # verify the required parameter 'body' is set
+      fail "Missing the required parameter 'body' when calling job_id_patch" if body.nil?
+      
+      # resource path
+      local_var_path = "/job/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/json']
+      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'JobWrapper')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: JobsApi#job_id_patch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -383,66 +383,6 @@ module IronTitan
       return data, status_code, headers
     end
 
-    # Enqueue Job
-    # Enqueues a job.
-    # @param body Array of jobs to post.
-    # @param [Hash] opts the optional parameters
-    # @return [JobsWrapper]
-    def jobs_post(body, opts = {})
-      data, status_code, headers = jobs_post_with_http_info(body, opts)
-      return data
-    end
-
-    # Enqueue Job
-    # Enqueues a job.
-    # @param body Array of jobs to post.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(JobsWrapper, Fixnum, Hash)>] JobsWrapper data, response status code and response headers
-    def jobs_post_with_http_info(body, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: JobsApi#jobs_post ..."
-      end
-      
-      # verify the required parameter 'body' is set
-      fail "Missing the required parameter 'body' when calling jobs_post" if body.nil?
-      
-      # resource path
-      local_var_path = "/jobs".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
-
-      # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(body)
-      
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'JobsWrapper')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: JobsApi#jobs_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Get job list by name.
     # Gets the next job in the queue, ready for processing.
     # @param name Name of this set of jobs.
@@ -505,6 +445,66 @@ module IronTitan
         :return_type => 'JobsWrapper')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: JobsApi#jobs_name_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Enqueue Job
+    # Enqueues a job.
+    # @param body Array of jobs to post.
+    # @param [Hash] opts the optional parameters
+    # @return [JobsWrapper]
+    def jobs_post(body, opts = {})
+      data, status_code, headers = jobs_post_with_http_info(body, opts)
+      return data
+    end
+
+    # Enqueue Job
+    # Enqueues a job.
+    # @param body Array of jobs to post.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(JobsWrapper, Fixnum, Hash)>] JobsWrapper data, response status code and response headers
+    def jobs_post_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: JobsApi#jobs_post ..."
+      end
+      
+      # verify the required parameter 'body' is set
+      fail "Missing the required parameter 'body' when calling jobs_post" if body.nil?
+      
+      # resource path
+      local_var_path = "/jobs".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/json']
+      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'JobsWrapper')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: JobsApi#jobs_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

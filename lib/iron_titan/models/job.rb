@@ -14,89 +14,89 @@ require 'date'
 
 module IronTitan
   class Job
+    # Docker image to use for job. Default is the same as the 'image' parameter.
+    attr_accessor :name
+
     # Docker image to use for job.
     attr_accessor :image
-
-    # If this field is set, then this job is a retry of a previous job. retry_from_id points to the previous job.
-    attr_accessor :retry_from_id
-
-    # Time when job was submitted.
-    attr_accessor :created_at
-
-    # Priority of the job. 3 levels from 0-2. Default 0.
-    attr_accessor :priority
-
-    # Time in seconds to wait before next attempt. Default 60.
-    attr_accessor :retries_delay
-
-    # Сorresponding error message, only when status=='error'.
-    attr_accessor :error
-
-    # Maximum runtime in seconds. If job runs for longer, it will be killed. Default 60 seconds.
-    attr_accessor :timeout
-
-    # Max number of retries. A retry will be attempted if a task fails. Default 3. TODO: naming: retries or max_retries?
-    attr_accessor :retries
-
-    # Time when job completed, whether it was successul or failed.
-    attr_accessor :completed_at
-
-    # Number of seconds to wait before starting. Default 0.
-    attr_accessor :delay
 
     # Payload for the job.  This is what you pass into each job to make it do something.
     attr_accessor :payload
 
-    # Docker image to use for job. Default is the same as the 'image' parameter.
-    attr_accessor :name
+    # Number of seconds to wait before starting. Default 0.
+    attr_accessor :delay
 
-    # Time when job started execution.
-    attr_accessor :started_at
+    # Maximum runtime in seconds. If job runs for longer, it will be killed. Default 60 seconds.
+    attr_accessor :timeout
+
+    # Priority of the job. 3 levels from 0-2. Default 0.
+    attr_accessor :priority
+
+    # Max number of retries. A retry will be attempted if a task fails. Default 3. TODO: naming: retries or max_retries?
+    attr_accessor :retries
+
+    # Time in seconds to wait before next attempt. Default 60.
+    attr_accessor :retries_delay
+
+    # If this field is set, then this job is a retry of a previous job. retry_from_id points to the previous job.
+    attr_accessor :retry_from_id
 
     # Unique identifier representing a specific job.
     attr_accessor :id
 
-    # If this field is set, then this job was retried and RetryId points to new job.
-    attr_accessor :retry_id
-
     # Status of job. One of: [pending, running, success, error, timeout]
     attr_accessor :status
+
+    # Time when job was submitted.
+    attr_accessor :created_at
+
+    # Сorresponding error message, only when status=='error'.
+    attr_accessor :error
+
+    # Time when job started execution.
+    attr_accessor :started_at
+
+    # Time when job completed, whether it was successul or failed.
+    attr_accessor :completed_at
+
+    # If this field is set, then this job was retried and RetryId points to new job.
+    attr_accessor :retry_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         
+        :'name' => :'name',
+        
         :'image' => :'image',
-        
-        :'retry_from_id' => :'retry_from_id',
-        
-        :'created_at' => :'created_at',
-        
-        :'priority' => :'priority',
-        
-        :'retries_delay' => :'retries_delay',
-        
-        :'error' => :'error',
-        
-        :'timeout' => :'timeout',
-        
-        :'retries' => :'retries',
-        
-        :'completed_at' => :'completed_at',
-        
-        :'delay' => :'delay',
         
         :'payload' => :'payload',
         
-        :'name' => :'name',
+        :'delay' => :'delay',
         
-        :'started_at' => :'started_at',
+        :'timeout' => :'timeout',
+        
+        :'priority' => :'priority',
+        
+        :'retries' => :'retries',
+        
+        :'retries_delay' => :'retries_delay',
+        
+        :'retry_from_id' => :'retry_from_id',
         
         :'id' => :'id',
         
-        :'retry_id' => :'retry_id',
+        :'status' => :'status',
         
-        :'status' => :'status'
+        :'created_at' => :'created_at',
+        
+        :'error' => :'error',
+        
+        :'started_at' => :'started_at',
+        
+        :'completed_at' => :'completed_at',
+        
+        :'retry_id' => :'retry_id'
         
       }
     end
@@ -104,22 +104,22 @@ module IronTitan
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'image' => :'String',
-        :'retry_from_id' => :'String',
-        :'created_at' => :'DateTime',
-        :'priority' => :'Integer',
-        :'retries_delay' => :'Integer',
-        :'error' => :'String',
-        :'timeout' => :'Integer',
-        :'retries' => :'Integer',
-        :'completed_at' => :'DateTime',
-        :'delay' => :'Integer',
-        :'payload' => :'String',
         :'name' => :'String',
-        :'started_at' => :'DateTime',
+        :'image' => :'String',
+        :'payload' => :'String',
+        :'delay' => :'Integer',
+        :'timeout' => :'Integer',
+        :'priority' => :'Integer',
+        :'retries' => :'Integer',
+        :'retries_delay' => :'Integer',
+        :'retry_from_id' => :'String',
         :'id' => :'String',
-        :'retry_id' => :'String',
-        :'status' => :'String'
+        :'status' => :'String',
+        :'created_at' => :'DateTime',
+        :'error' => :'String',
+        :'started_at' => :'DateTime',
+        :'completed_at' => :'DateTime',
+        :'retry_id' => :'String'
         
       }
     end
@@ -131,68 +131,68 @@ module IronTitan
       attributes = attributes.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
       
+      if attributes[:'name']
+        self.name = attributes[:'name']
+      end
+      
       if attributes[:'image']
         self.image = attributes[:'image']
-      end
-      
-      if attributes[:'retry_from_id']
-        self.retry_from_id = attributes[:'retry_from_id']
-      end
-      
-      if attributes[:'created_at']
-        self.created_at = attributes[:'created_at']
-      end
-      
-      if attributes[:'priority']
-        self.priority = attributes[:'priority']
-      end
-      
-      if attributes[:'retries_delay']
-        self.retries_delay = attributes[:'retries_delay']
-      end
-      
-      if attributes[:'error']
-        self.error = attributes[:'error']
-      end
-      
-      if attributes[:'timeout']
-        self.timeout = attributes[:'timeout']
-      end
-      
-      if attributes[:'retries']
-        self.retries = attributes[:'retries']
-      end
-      
-      if attributes[:'completed_at']
-        self.completed_at = attributes[:'completed_at']
-      end
-      
-      if attributes[:'delay']
-        self.delay = attributes[:'delay']
       end
       
       if attributes[:'payload']
         self.payload = attributes[:'payload']
       end
       
-      if attributes[:'name']
-        self.name = attributes[:'name']
+      if attributes[:'delay']
+        self.delay = attributes[:'delay']
       end
       
-      if attributes[:'started_at']
-        self.started_at = attributes[:'started_at']
+      if attributes[:'timeout']
+        self.timeout = attributes[:'timeout']
+      end
+      
+      if attributes[:'priority']
+        self.priority = attributes[:'priority']
+      end
+      
+      if attributes[:'retries']
+        self.retries = attributes[:'retries']
+      end
+      
+      if attributes[:'retries_delay']
+        self.retries_delay = attributes[:'retries_delay']
+      end
+      
+      if attributes[:'retry_from_id']
+        self.retry_from_id = attributes[:'retry_from_id']
       end
       
       if attributes[:'id']
         self.id = attributes[:'id']
       end
       
-      if attributes[:'retry_id']
-        self.retry_id = attributes[:'retry_id']
-      end
-      
       if attributes[:'status']
         self.status = attributes[:'status']
+      end
+      
+      if attributes[:'created_at']
+        self.created_at = attributes[:'created_at']
+      end
+      
+      if attributes[:'error']
+        self.error = attributes[:'error']
+      end
+      
+      if attributes[:'started_at']
+        self.started_at = attributes[:'started_at']
+      end
+      
+      if attributes[:'completed_at']
+        self.completed_at = attributes[:'completed_at']
+      end
+      
+      if attributes[:'retry_id']
+        self.retry_id = attributes[:'retry_id']
       end
       
     end
@@ -201,22 +201,22 @@ module IronTitan
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          image == o.image &&
-          retry_from_id == o.retry_from_id &&
-          created_at == o.created_at &&
-          priority == o.priority &&
-          retries_delay == o.retries_delay &&
-          error == o.error &&
-          timeout == o.timeout &&
-          retries == o.retries &&
-          completed_at == o.completed_at &&
-          delay == o.delay &&
-          payload == o.payload &&
           name == o.name &&
-          started_at == o.started_at &&
+          image == o.image &&
+          payload == o.payload &&
+          delay == o.delay &&
+          timeout == o.timeout &&
+          priority == o.priority &&
+          retries == o.retries &&
+          retries_delay == o.retries_delay &&
+          retry_from_id == o.retry_from_id &&
           id == o.id &&
-          retry_id == o.retry_id &&
-          status == o.status
+          status == o.status &&
+          created_at == o.created_at &&
+          error == o.error &&
+          started_at == o.started_at &&
+          completed_at == o.completed_at &&
+          retry_id == o.retry_id
     end
 
     # @see the `==` method
@@ -226,7 +226,7 @@ module IronTitan
 
     # Calculate hash code according to all attributes.
     def hash
-      [image, retry_from_id, created_at, priority, retries_delay, error, timeout, retries, completed_at, delay, payload, name, started_at, id, retry_id, status].hash
+      [name, image, payload, delay, timeout, priority, retries, retries_delay, retry_from_id, id, status, created_at, error, started_at, completed_at, retry_id].hash
     end
 
     # build the object from hash
