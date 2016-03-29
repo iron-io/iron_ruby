@@ -1,8 +1,7 @@
-# IronTitan::NewJobsWrapper
+# IronTitan::Reason
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**jobs** | [**Array&lt;NewJobWithImage&gt;**](NewJobWithImage.md) |  | 
 
 

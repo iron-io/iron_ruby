@@ -3,21 +3,20 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | Docker image to use for job. Default is the same as the &#39;image&#39; parameter. | [optional] 
-**image** | **String** | Docker image to use for job. | 
-**payload** | **String** | Payload for the job.  This is what you pass into each job to make it do something. | [optional] 
-**delay** | **Integer** | Number of seconds to wait before starting. Default 0. | [optional] 
-**timeout** | **Integer** | Maximum runtime in seconds. If job runs for longer, it will be killed. Default 60 seconds. | [optional] 
-**priority** | **Integer** | Priority of the job. 3 levels from 0-2. Default 0. | [optional] 
-**retries** | **Integer** | Max number of retries. A retry will be attempted if a task fails. Default 3. TODO: naming: retries or max_retries? | [optional] 
-**retries_delay** | **Integer** | Time in seconds to wait before next attempt. Default 60. | [optional] 
-**retry_from_id** | **String** | If this field is set, then this job is a retry of a previous job. retry_from_id points to the previous job. | [optional] 
+**payload** | **String** | Payload for the job. This is what you pass into each job to make it do something. | [optional] 
+**delay** | **Integer** | Number of seconds to wait before queueing the job for consumption for the first time. Must be a positive integer. Jobs with a delay start in state \&quot;delayed\&quot; and transition to \&quot;running\&quot; after delay seconds. | [optional] [default to 0]
+**timeout** | **Integer** | Maximum runtime in seconds. If a consumer retrieves the job, but does not change it&#39;s status within timeout seconds, the job is considered failed, with reason timeout (Titan may allow a small grace period). The consumer should also kill the job after timeout seconds. If a consumer tries to change status after Titan has already timed out the job, the consumer will be ignored. | [optional] [default to 60]
+**priority** | **Integer** | Priority of the job. Higher has more priority. 3 levels from 0-2. Jobs at same priority are processed in FIFO order. | [optional] [default to 0]
+**max_retries** | **Integer** | Number of automatic retries this job is allowed. A retry will be attempted if a task fails. Max 25.\nAutomatic retries are performed by titan when a task reaches a failed state and has `max_retries` &gt; 0. A retry is performed by queueing a new job with the same image id and payload. The new job&#39;s max_retries is one less than the original. The new job&#39;s `retry_of` field is set to the original Job ID.  Titan will delay the new job for retries_delay seconds before queueing it. Cancelled or successful tasks are never automatically retried. | [optional] [default to 3]
+**retries_delay** | **Integer** | Time in seconds to wait before retrying the job. Must be a non-negative integer. | [optional] [default to 60]
 **id** | **String** | Unique identifier representing a specific job. | 
-**status** | **String** | Status of job. One of: [pending, running, success, error, timeout] | [optional] 
-**created_at** | **DateTime** | Time when job was submitted. | [optional] 
-**error** | **String** | Сorresponding error message, only when status==&#39;error&#39;. | [optional] 
-**started_at** | **DateTime** | Time when job started execution. | [optional] 
-**completed_at** | **DateTime** | Time when job completed, whether it was successul or failed. | [optional] 
-**retry_id** | **String** | If this field is set, then this job was retried and RetryId points to new job. | [optional] 
+**status** | **String** | States and valid transitions.\n\n                 +---------+\n       +---------&gt; delayed &lt;----------------+\n                 +----+----+                |\n                      |                     |\n                      |                     |\n                 +----v----+                |\n       +---------&gt; queued  &lt;----------------+\n                 +----+----+                *\n                      |                     *\n                      |               retry * creates new job\n                 +----v----+                *\n                 | running |                *\n                 +--+-+-+--+                |\n          +---------|-|-|-----+-------------+\n      +---|---------+ | +-----|---------+   |\n      |   |           |       |         |   |\n+-----v---^-+      +--v-------^+     +--v---^-+\n| succeeded |      | cancelled |     | failed |\n+-----------+      +-----------+     +--------+\n\n* delayed - has a delay.\n* queued - Ready to be consumed when it&#39;s turn comes.\n* running - Currently consumed by a runner which will attempt to process it.\n* succeeded - (or complete? success/error is common javascript terminology)\n* failed - Something went wrong. In this case more information can be obtained\n  by inspecting the \&quot;reason\&quot; field.\n  - timeout\n  - killed - forcibly killed by worker due to resource restrictions or access\n    violations.\n  - bad_exit - exited with non-zero status due to program termination/crash.\n* cancelled - cancelled via API. More information in the reason field.\n  - client_request - Request was cancelled by a client. See \&quot;details\&quot; for any\n    details. | [optional] 
+**image_id** | **String** | Image to execute to run this Job. Get details via the /image/{id} endpoint. | [optional] 
+**reason** | [**Reason**](Reason.md) |  | [optional] 
+**details** | **String** | Some description of the reason this Job is in current state. Used only for presentation purposes. Should be human-readable. | [optional] 
+**created_at** | **DateTime** | Time when job was submitted. Always in UTC. | [optional] 
+**started_at** | **DateTime** | Time when job started execution. Always in UTC. | [optional] 
+**completed_at** | **DateTime** | Time when job completed, whether it was successul or failed. Always in UTC. | [optional] 
+**retry_of** | **String** | If this field is set, then this job is a retry of the ID in this field. | [optional] 
 
 

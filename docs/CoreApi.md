@@ -4,9 +4,56 @@ All URIs are relative to *https://localhost:8080/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**job_id_delete**](CoreApi.md#job_id_delete) | **DELETE** /job/{id} | Delete the job.
 [**job_id_get**](CoreApi.md#job_id_get) | **GET** /job/{id} | Gets job by id
-[**jobs_get**](CoreApi.md#jobs_get) | **GET** /jobs | Get next job.
+[**jobs_consume_get**](CoreApi.md#jobs_consume_get) | **GET** /jobs/consume | Get next job.
 [**jobs_post**](CoreApi.md#jobs_post) | **POST** /jobs | Enqueue Job
+
+
+# **job_id_delete**
+> job_id_delete(id)
+
+Delete the job.
+
+Delete only succeeds if job status is one of `succeeded\n| failed | cancelled`. Cancel a job if it is another state and needs to\nbe deleted.  All information about the job, including the log, is\nirretrievably lost when this is invoked.
+
+### Example
+```ruby
+# load the gem
+require 'iron_titan'
+
+api_instance = IronTitan::CoreApi.new
+
+id = "id_example" # String | Job id
+
+
+begin
+  #Delete the job.
+  api_instance.job_id_delete(id)
+rescue IronTitan::ApiError => e
+  puts "Exception when calling CoreApi->job_id_delete: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Job id | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP reuqest headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 
 
 # **job_id_get**
@@ -56,12 +103,12 @@ No authorization required
 
 
 
-# **jobs_get**
-> JobsWrapper jobs_get(opts)
+# **jobs_consume_get**
+> JobsWrapper jobs_consume_get(opts)
 
 Get next job.
 
-Gets the next job in the queue, ready for processing.
+Gets the next job in the queue, ready for processing. Titan may return <=n jobs. Consumers should start processing jobs in order. Each returned job is set to `status` \"running\" and `started_at` is set to the current time. No other consumer can retrieve this job.
 
 ### Example
 ```ruby
@@ -71,15 +118,15 @@ require 'iron_titan'
 api_instance = IronTitan::CoreApi.new
 
 opts = { 
-  n: 56 # Integer | Number of jobs to return.
+  n: 1 # Integer | Number of jobs to return.
 }
 
 begin
   #Get next job.
-  result = api_instance.jobs_get(opts)
+  result = api_instance.jobs_consume_get(opts)
   p result
 rescue IronTitan::ApiError => e
-  puts "Exception when calling CoreApi->jobs_get: #{e}"
+  puts "Exception when calling CoreApi->jobs_consume_get: #{e}"
 end
 ```
 
@@ -87,7 +134,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **n** | **Integer**| Number of jobs to return. | [optional] 
+ **n** | **Integer**| Number of jobs to return. | [optional] [default to 1]
 
 ### Return type
 
@@ -109,7 +156,7 @@ No authorization required
 
 Enqueue Job
 
-Enqueues a job.
+Enqueues job(s). If any of the jobs is invalid, none of the jobs are enqueued.
 
 ### Example
 ```ruby

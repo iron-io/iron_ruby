@@ -4,8 +4,55 @@ All URIs are relative to *https://localhost:8080/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**image_id_get**](ImagesApi.md#image_id_get) | **GET** /image/{id} | Get information for image id.
 [**images_get**](ImagesApi.md#images_get) | **GET** /images | Get all image names.
-[**images_name_get**](ImagesApi.md#images_name_get) | **GET** /images/{name} | Get image by name.
+
+
+# **image_id_get**
+> ImageWrapper image_id_get(id)
+
+Get information for image id.
+
+This gives more details about on image, such as the image name and other statistics.
+
+### Example
+```ruby
+# load the gem
+require 'iron_titan'
+
+api_instance = IronTitan::ImagesApi.new
+
+id = "id_example" # String | ID of the image.
+
+
+begin
+  #Get information for image id.
+  result = api_instance.image_id_get(id)
+  p result
+rescue IronTitan::ApiError => e
+  puts "Exception when calling ImagesApi->image_id_get: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| ID of the image. | 
+
+### Return type
+
+[**ImageWrapper**](ImageWrapper.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP reuqest headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 
 
 # **images_get**
@@ -37,53 +84,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ImagesWrapper**](ImagesWrapper.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP reuqest headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **images_name_get**
-> ImageWrapper images_name_get(name)
-
-Get image by name.
-
-NOT IMPLEMENTED YET. This gives more details about on image, such as statistics and what not.
-
-### Example
-```ruby
-# load the gem
-require 'iron_titan'
-
-api_instance = IronTitan::ImagesApi.new
-
-name = "name_example" # String | Name of the image.
-
-
-begin
-  #Get image by name.
-  result = api_instance.images_name_get(name)
-  p result
-rescue IronTitan::ApiError => e
-  puts "Exception when calling ImagesApi->images_name_get: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| Name of the image. | 
-
-### Return type
-
-[**ImageWrapper**](ImageWrapper.md)
 
 ### Authorization
 
