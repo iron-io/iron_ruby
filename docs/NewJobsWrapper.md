@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**jobs** | [**Array&lt;NewJobWithImage&gt;**](NewJobWithImage.md) |  | 
+**jobs** | [**Array&lt;NewJob&gt;**](NewJob.md) |  | 
 
 

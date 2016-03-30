@@ -14,7 +14,6 @@ Method | HTTP request | Description
 [**job_id_touch_post**](JobsApi.md#job_id_touch_post) | **POST** /job/{id}/touch | Extend job timeout.
 [**jobs_consume_get**](JobsApi.md#jobs_consume_get) | **GET** /jobs/consume | Get next job.
 [**jobs_get**](JobsApi.md#jobs_get) | **GET** /jobs | Peek at list of jobs.
-[**jobs_name_get**](JobsApi.md#jobs_name_get) | **GET** /jobs/{name} | Get job list by name.
 [**jobs_post**](JobsApi.md#jobs_post) | **POST** /jobs | Enqueue Job
 
 
@@ -487,59 +486,6 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **n** | **Integer**| Number of jobs to return. Titan may return &lt;=n jobs. Titan does not make any guarantees about job ordering, but jobs will not be repeated. To make sure you get unique jobs, use the cursor effectively. TODO: We don&#39;t actually support pagination. | [optional] [default to 10]
-
-### Return type
-
-[**JobsWrapper**](JobsWrapper.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP reuqest headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **jobs_name_get**
-> JobsWrapper jobs_name_get(name, opts)
-
-Get job list by name.
-
-Gets the next job in the queue, ready for processing.
-
-### Example
-```ruby
-# load the gem
-require 'iron_titan'
-
-api_instance = IronTitan::JobsApi.new
-
-name = "name_example" # String | Name of this set of jobs.
-
-opts = { 
-  created_after: DateTime.parse("2013-10-20T19:20:30+01:00"), # DateTime | Will return jobs created after this time. In RFC3339 format.
-  n: 56 # Integer | Number of jobs to return.
-}
-
-begin
-  #Get job list by name.
-  result = api_instance.jobs_name_get(name, opts)
-  p result
-rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->jobs_name_get: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| Name of this set of jobs. | 
- **created_after** | **DateTime**| Will return jobs created after this time. In RFC3339 format. | [optional] 
- **n** | **Integer**| Number of jobs to return. | [optional] 
 
 ### Return type
 
