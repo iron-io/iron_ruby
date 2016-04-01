@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**job_id_fail_post**](JobsApi.md#job_id_fail_post) | **POST** /job/{id}/fail | Mark job as failed.
 [**job_id_get**](JobsApi.md#job_id_get) | **GET** /job/{id} | Gets job by id
 [**job_id_log_get**](JobsApi.md#job_id_log_get) | **GET** /job/{id}/log | Get the log of a completed job.
+[**job_id_patch**](JobsApi.md#job_id_patch) | **PATCH** /job/{id} | Update a job
 [**job_id_retry_post**](JobsApi.md#job_id_retry_post) | **POST** /job/{id}/retry | Retry a job.
 [**job_id_success_post**](JobsApi.md#job_id_success_post) | **POST** /job/{id}/success | Mark job as succeeded.
 [**job_id_touch_post**](JobsApi.md#job_id_touch_post) | **POST** /job/{id}/touch | Extend job timeout.
@@ -260,6 +261,56 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: text/plain
+
+
+
+# **job_id_patch**
+> JobWrapper job_id_patch(id, body)
+
+Update a job
+
+Typically used to update status on error/completion. TODO: only allow 'status' field.
+
+### Example
+```ruby
+# load the gem
+require 'iron_titan'
+
+api_instance = IronTitan::JobsApi.new
+
+id = "id_example" # String | Job id
+
+body = IronTitan::JobWrapper.new # JobWrapper | Job data to post
+
+
+begin
+  #Update a job
+  result = api_instance.job_id_patch(id, body)
+  p result
+rescue IronTitan::ApiError => e
+  puts "Exception when calling JobsApi->job_id_patch: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Job id | 
+ **body** | [**JobWrapper**](JobWrapper.md)| Job data to post | 
+
+### Return type
+
+[**JobWrapper**](JobWrapper.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP reuqest headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 
