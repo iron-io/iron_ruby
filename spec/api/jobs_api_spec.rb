@@ -154,6 +154,24 @@ describe 'JobsApi' do
     end
   end
 
+  # unit tests for groups_group_name_jobs_id_patch
+  # Update a job
+  # Used to update status on job transitions. Eg: from &#39;running&#39; to &#39;success&#39;.
+  # @param group_name Name of group for this set of jobs.
+  # @param id Job id
+  # @param body Job data to post
+  # @param [Hash] opts the optional parameters
+  # @return [JobWrapper]
+  describe 'groups_group_name_jobs_id_patch test' do
+    it "should work" do
+      # assertion here
+      # should be_a()
+      # should be_nil
+      # should ==
+      # should_not ==
+    end
+  end
+
   # unit tests for groups_group_name_jobs_id_retry_post
   # Retry a job.
   # \&quot;The /retry endpoint can be used to force a retry of jobs\nwith status succeeded or cancelled. It can also be used to retry jobs\nthat in the failed state, but whose max_retries field is 0. The retried\njob will continue to have max_retries = 0.\&quot;\n

@@ -487,6 +487,76 @@ module IronTitan
       return data, status_code, headers
     end
 
+    # Update a job
+    # Used to update status on job transitions. Eg: from 'running' to 'success'.
+    # @param group_name Name of group for this set of jobs.
+    # @param id Job id
+    # @param body Job data to post
+    # @param [Hash] opts the optional parameters
+    # @return [JobWrapper]
+    def groups_group_name_jobs_id_patch(group_name, id, body, opts = {})
+      data, status_code, headers = groups_group_name_jobs_id_patch_with_http_info(group_name, id, body, opts)
+      return data
+    end
+
+    # Update a job
+    # Used to update status on job transitions. Eg: from &#39;running&#39; to &#39;success&#39;.
+    # @param group_name Name of group for this set of jobs.
+    # @param id Job id
+    # @param body Job data to post
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(JobWrapper, Fixnum, Hash)>] JobWrapper data, response status code and response headers
+    def groups_group_name_jobs_id_patch_with_http_info(group_name, id, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: JobsApi#groups_group_name_jobs_id_patch ..."
+      end
+      
+      # verify the required parameter 'group_name' is set
+      fail "Missing the required parameter 'group_name' when calling groups_group_name_jobs_id_patch" if group_name.nil?
+      
+      # verify the required parameter 'id' is set
+      fail "Missing the required parameter 'id' when calling groups_group_name_jobs_id_patch" if id.nil?
+      
+      # verify the required parameter 'body' is set
+      fail "Missing the required parameter 'body' when calling groups_group_name_jobs_id_patch" if body.nil?
+      
+      # resource path
+      local_var_path = "/groups/{group_name}/jobs/{id}".sub('{format}','json').sub('{' + 'group_name' + '}', group_name.to_s).sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/json']
+      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'JobWrapper')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: JobsApi#groups_group_name_jobs_id_patch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retry a job.
     # \"The /retry endpoint can be used to force a retry of jobs\nwith status succeeded or cancelled. It can also be used to retry jobs\nthat in the failed state, but whose max_retries field is 0. The retried\njob will continue to have max_retries = 0.\"\n
     # @param group_name Name of group for this set of jobs.

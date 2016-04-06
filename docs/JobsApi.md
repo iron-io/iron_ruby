@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**groups_group_name_jobs_id_get**](JobsApi.md#groups_group_name_jobs_id_get) | **GET** /groups/{group_name}/jobs/{id} | Gets job by id
 [**groups_group_name_jobs_id_log_get**](JobsApi.md#groups_group_name_jobs_id_log_get) | **GET** /groups/{group_name}/jobs/{id}/log | Get the log of a completed job.
 [**groups_group_name_jobs_id_log_post**](JobsApi.md#groups_group_name_jobs_id_log_post) | **POST** /groups/{group_name}/jobs/{id}/log | Send in a log for storage.
+[**groups_group_name_jobs_id_patch**](JobsApi.md#groups_group_name_jobs_id_patch) | **PATCH** /groups/{group_name}/jobs/{id} | Update a job
 [**groups_group_name_jobs_id_retry_post**](JobsApi.md#groups_group_name_jobs_id_retry_post) | **POST** /groups/{group_name}/jobs/{id}/retry | Retry a job.
 [**groups_group_name_jobs_id_success_post**](JobsApi.md#groups_group_name_jobs_id_success_post) | **POST** /groups/{group_name}/jobs/{id}/success | Mark job as succeeded.
 [**groups_group_name_jobs_id_touch_post**](JobsApi.md#groups_group_name_jobs_id_touch_post) | **POST** /groups/{group_name}/jobs/{id}/touch | Extend job timeout.
@@ -372,6 +373,59 @@ No authorization required
 ### HTTP reuqest headers
 
  - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+
+# **groups_group_name_jobs_id_patch**
+> JobWrapper groups_group_name_jobs_id_patch(group_name, id, body)
+
+Update a job
+
+Used to update status on job transitions. Eg: from 'running' to 'success'.
+
+### Example
+```ruby
+# load the gem
+require 'iron_titan'
+
+api_instance = IronTitan::JobsApi.new
+
+group_name = "group_name_example" # String | Name of group for this set of jobs.
+
+id = "id_example" # String | Job id
+
+body = IronTitan::JobWrapper.new # JobWrapper | Job data to post
+
+
+begin
+  #Update a job
+  result = api_instance.groups_group_name_jobs_id_patch(group_name, id, body)
+  p result
+rescue IronTitan::ApiError => e
+  puts "Exception when calling JobsApi->groups_group_name_jobs_id_patch: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_name** | **String**| Name of group for this set of jobs. | 
+ **id** | **String**| Job id | 
+ **body** | [**JobWrapper**](JobWrapper.md)| Job data to post | 
+
+### Return type
+
+[**JobWrapper**](JobWrapper.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP reuqest headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
