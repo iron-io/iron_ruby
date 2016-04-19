@@ -11,8 +11,8 @@ Method | HTTP request | Description
 [**groups_group_name_jobs_id_get**](JobsApi.md#groups_group_name_jobs_id_get) | **GET** /groups/{group_name}/jobs/{id} | Gets job by id
 [**groups_group_name_jobs_id_log_get**](JobsApi.md#groups_group_name_jobs_id_log_get) | **GET** /groups/{group_name}/jobs/{id}/log | Get the log of a completed job.
 [**groups_group_name_jobs_id_log_post**](JobsApi.md#groups_group_name_jobs_id_log_post) | **POST** /groups/{group_name}/jobs/{id}/log | Send in a log for storage.
-[**groups_group_name_jobs_id_patch**](JobsApi.md#groups_group_name_jobs_id_patch) | **PATCH** /groups/{group_name}/jobs/{id} | Update a job
 [**groups_group_name_jobs_id_retry_post**](JobsApi.md#groups_group_name_jobs_id_retry_post) | **POST** /groups/{group_name}/jobs/{id}/retry | Retry a job.
+[**groups_group_name_jobs_id_start_post**](JobsApi.md#groups_group_name_jobs_id_start_post) | **POST** /groups/{group_name}/jobs/{id}/start | Mark job as started, ie: status &#x3D; &#39;running&#39;
 [**groups_group_name_jobs_id_success_post**](JobsApi.md#groups_group_name_jobs_id_success_post) | **POST** /groups/{group_name}/jobs/{id}/success | Mark job as succeeded.
 [**groups_group_name_jobs_id_touch_post**](JobsApi.md#groups_group_name_jobs_id_touch_post) | **POST** /groups/{group_name}/jobs/{id}/touch | Extend job timeout.
 [**groups_group_name_jobs_post**](JobsApi.md#groups_group_name_jobs_post) | **POST** /groups/{group_name}/jobs | Enqueue Job
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -77,7 +77,7 @@ No authorization required
 
 Cancel a job.
 
-Cancels a job in delayed, queued or running status. The worker may continue to run a running job. reason is set to `client_request`.
+Cancels a job in delayed, queued or running status. The worker may continue to run a running job. reason is set to `client_request`. The job's completed_at field is set to the current time on the jobserver.
 
 ### Example
 ```ruby
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -164,7 +164,7 @@ nil (empty response body)
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -172,11 +172,11 @@ No authorization required
 
 
 # **groups_group_name_jobs_id_error_post**
-> JobWrapper groups_group_name_jobs_id_error_post(group_name, id, reason)
+> JobWrapper groups_group_name_jobs_id_error_post(group_name, id, body)
 
 Mark job as failed.
 
-Job is marked as failed if it was in a valid state. Job's `completed_at` time is initialized.
+Job is marked as failed if it was in a valid state. Job's `finished_at` time is initialized.
 
 ### Example
 ```ruby
@@ -189,12 +189,12 @@ group_name = "group_name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
-reason = "reason_example" # String | Reason for job failure.
+body = IronTitan::Complete.new # Complete | 
 
 
 begin
   #Mark job as failed.
-  result = api_instance.groups_group_name_jobs_id_error_post(group_name, id, reason)
+  result = api_instance.groups_group_name_jobs_id_error_post(group_name, id, body)
   p result
 rescue IronTitan::ApiError => e
   puts "Exception when calling JobsApi->groups_group_name_jobs_id_error_post: #{e}"
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
- **reason** | **String**| Reason for job failure. | 
+ **body** | [**Complete**](Complete.md)|  | 
 
 ### Return type
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -317,7 +317,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: text/plain
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
- **log** | **File**| Output log for the job. Content-Type must be \&quot;text/plain; charset=utf-8\&quot;. | 
+ **log** | **File**| Output log for the job. Content-Type must be \&quot;text/plain; charset&#x3D;utf-8\&quot;. | 
 
 ### Return type
 
@@ -370,62 +370,9 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-
-
-# **groups_group_name_jobs_id_patch**
-> JobWrapper groups_group_name_jobs_id_patch(group_name, id, body)
-
-Update a job
-
-Used to update status on job transitions. Eg: from 'running' to 'success'.
-
-### Example
-```ruby
-# load the gem
-require 'iron_titan'
-
-api_instance = IronTitan::JobsApi.new
-
-group_name = "group_name_example" # String | Name of group for this set of jobs.
-
-id = "id_example" # String | Job id
-
-body = IronTitan::JobWrapper.new # JobWrapper | Job data to post
-
-
-begin
-  #Update a job
-  result = api_instance.groups_group_name_jobs_id_patch(group_name, id, body)
-  p result
-rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_id_patch: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
- **id** | **String**| Job id | 
- **body** | [**JobWrapper**](JobWrapper.md)| Job data to post | 
-
-### Return type
-
-[**JobWrapper**](JobWrapper.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP reuqest headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -473,7 +420,60 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **groups_group_name_jobs_id_start_post**
+> JobWrapper groups_group_name_jobs_id_start_post(group_name, id, body)
+
+Mark job as started, ie: status = 'running'
+
+Job status is changed to 'running' if it was in a valid state before. Job's `started_at` time is initialized.
+
+### Example
+```ruby
+# load the gem
+require 'iron_titan'
+
+api_instance = IronTitan::JobsApi.new
+
+group_name = "group_name_example" # String | Name of group for this set of jobs.
+
+id = "id_example" # String | Job id
+
+body = IronTitan::Start.new # Start | 
+
+
+begin
+  #Mark job as started, ie: status = 'running'
+  result = api_instance.groups_group_name_jobs_id_start_post(group_name, id, body)
+  p result
+rescue IronTitan::ApiError => e
+  puts "Exception when calling JobsApi->groups_group_name_jobs_id_start_post: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_name** | **String**| Name of group for this set of jobs. | 
+ **id** | **String**| Job id | 
+ **body** | [**Start**](Start.md)|  | 
+
+### Return type
+
+[**JobWrapper**](JobWrapper.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -481,7 +481,7 @@ No authorization required
 
 
 # **groups_group_name_jobs_id_success_post**
-> JobWrapper groups_group_name_jobs_id_success_post(group_name, id)
+> JobWrapper groups_group_name_jobs_id_success_post(group_name, id, body)
 
 Mark job as succeeded.
 
@@ -498,10 +498,12 @@ group_name = "group_name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
+body = IronTitan::Complete.new # Complete | 
+
 
 begin
   #Mark job as succeeded.
-  result = api_instance.groups_group_name_jobs_id_success_post(group_name, id)
+  result = api_instance.groups_group_name_jobs_id_success_post(group_name, id, body)
   p result
 rescue IronTitan::ApiError => e
   puts "Exception when calling JobsApi->groups_group_name_jobs_id_success_post: #{e}"
@@ -514,6 +516,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
+ **body** | [**Complete**](Complete.md)|  | 
 
 ### Return type
 
@@ -523,7 +526,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -572,7 +575,7 @@ nil (empty response body)
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -622,7 +625,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -670,7 +673,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
