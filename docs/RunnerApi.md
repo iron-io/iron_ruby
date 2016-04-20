@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **groups_group_name_jobs_id_error_post**
-> JobWrapper groups_group_name_jobs_id_error_post(group_name, id, body)
+> JobWrapper groups_group_name_jobs_id_error_post(group_name, id, reason)
 
 Mark job as failed.
 
@@ -27,12 +27,12 @@ group_name = "group_name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
-body = IronTitan::Complete.new # Complete | 
+reason = "reason_example" # String | Reason for job failure.
 
 
 begin
   #Mark job as failed.
-  result = api_instance.groups_group_name_jobs_id_error_post(group_name, id, body)
+  result = api_instance.groups_group_name_jobs_id_error_post(group_name, id, reason)
   p result
 rescue IronTitan::ApiError => e
   puts "Exception when calling RunnerApi->groups_group_name_jobs_id_error_post: #{e}"
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
- **body** | [**Complete**](Complete.md)|  | 
+ **reason** | **String**| Reason for job failure. | 
 
 ### Return type
 
@@ -116,7 +116,7 @@ No authorization required
 
 
 # **groups_group_name_jobs_id_success_post**
-> JobWrapper groups_group_name_jobs_id_success_post(group_name, id, body)
+> JobWrapper groups_group_name_jobs_id_success_post(group_name, id)
 
 Mark job as succeeded.
 
@@ -133,12 +133,10 @@ group_name = "group_name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
-body = IronTitan::Complete.new # Complete | 
-
 
 begin
   #Mark job as succeeded.
-  result = api_instance.groups_group_name_jobs_id_success_post(group_name, id, body)
+  result = api_instance.groups_group_name_jobs_id_success_post(group_name, id)
   p result
 rescue IronTitan::ApiError => e
   puts "Exception when calling RunnerApi->groups_group_name_jobs_id_success_post: #{e}"
@@ -151,7 +149,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
- **body** | [**Complete**](Complete.md)|  | 
 
 ### Return type
 
