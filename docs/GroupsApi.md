@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 No authorization required
 
-### HTTP request headers
+### HTTP reuqest headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP request headers
+### HTTP reuqest headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
