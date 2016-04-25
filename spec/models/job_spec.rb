@@ -132,6 +132,16 @@ describe 'Job' do
     end
   end
 
+  describe 'test attribute "error"' do
+    it 'should work' do
+       # assertion here
+       # should be_a()
+       # should be_nil
+       # should ==
+       # should_not ==
+    end
+  end
+
   describe 'test attribute "reason"' do
     it 'should work' do
        # assertion here

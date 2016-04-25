@@ -17,8 +17,11 @@ module IronTitan
     # Time when job was completed. Always in UTC.
     attr_accessor :completed_at
 
-    # Reason for failure. Only used by the /error endpoint.
+    # Machine readable reason failure, if status=error. Only used by the /error endpoint.
     attr_accessor :reason
+
+    # Error message, if status=error. Only used by the /error endpoint.
+    attr_accessor :error
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -26,7 +29,9 @@ module IronTitan
         
         :'completed_at' => :'completed_at',
         
-        :'reason' => :'reason'
+        :'reason' => :'reason',
+        
+        :'error' => :'error'
         
       }
     end
@@ -35,7 +40,8 @@ module IronTitan
     def self.swagger_types
       {
         :'completed_at' => :'DateTime',
-        :'reason' => :'String'
+        :'reason' => :'String',
+        :'error' => :'String'
         
       }
     end
@@ -55,6 +61,10 @@ module IronTitan
         self.reason = attributes[:'reason']
       end
       
+      if attributes[:'error']
+        self.error = attributes[:'error']
+      end
+      
     end
 
     # Check equality by comparing each attribute.
@@ -62,7 +72,8 @@ module IronTitan
       return true if self.equal?(o)
       self.class == o.class &&
           completed_at == o.completed_at &&
-          reason == o.reason
+          reason == o.reason &&
+          error == o.error
     end
 
     # @see the `==` method
@@ -72,7 +83,7 @@ module IronTitan
 
     # Calculate hash code according to all attributes.
     def hash
-      [completed_at, reason].hash
+      [completed_at, reason, error].hash
     end
 
     # build the object from hash

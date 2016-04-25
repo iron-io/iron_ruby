@@ -44,6 +44,9 @@ module IronTitan
     # Group this job belongs to. 
     attr_accessor :group_name
 
+    # The error message, if status is 'error'. This is errors due to things outside the job itself. Errors from user code will be found in the log.
+    attr_accessor :error
+
     # Machine usable reason for job being in this state.\nValid values for error status are `timeout | killed | bad_exit`.\nValid values for cancelled status are `client_request`.\nFor everything else, this is undefined.\n
     attr_accessor :reason
 
@@ -86,6 +89,8 @@ module IronTitan
         
         :'group_name' => :'group_name',
         
+        :'error' => :'error',
+        
         :'reason' => :'reason',
         
         :'created_at' => :'created_at',
@@ -114,6 +119,7 @@ module IronTitan
         :'id' => :'String',
         :'status' => :'String',
         :'group_name' => :'String',
+        :'error' => :'String',
         :'reason' => :'String',
         :'created_at' => :'DateTime',
         :'started_at' => :'DateTime',
@@ -179,6 +185,10 @@ module IronTitan
         self.group_name = attributes[:'group_name']
       end
       
+      if attributes[:'error']
+        self.error = attributes[:'error']
+      end
+      
       if attributes[:'reason']
         self.reason = attributes[:'reason']
       end
@@ -237,6 +247,7 @@ module IronTitan
           id == o.id &&
           status == o.status &&
           group_name == o.group_name &&
+          error == o.error &&
           reason == o.reason &&
           created_at == o.created_at &&
           started_at == o.started_at &&
@@ -252,7 +263,7 @@ module IronTitan
 
     # Calculate hash code according to all attributes.
     def hash
-      [image, payload, delay, timeout, priority, max_retries, retries_delay, id, status, group_name, reason, created_at, started_at, completed_at, retry_of, retry_at].hash
+      [image, payload, delay, timeout, priority, max_retries, retries_delay, id, status, group_name, error, reason, created_at, started_at, completed_at, retry_of, retry_at].hash
     end
 
     # build the object from hash

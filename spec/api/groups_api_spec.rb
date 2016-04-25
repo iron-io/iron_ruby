@@ -63,4 +63,20 @@ describe 'GroupsApi' do
     end
   end
 
+  # unit tests for groups_post
+  # Post new group
+  # Insert a new job group
+  # @param body Group to post.
+  # @param [Hash] opts the optional parameters
+  # @return [GroupWrapper]
+  describe 'groups_post test' do
+    it "should work" do
+      # assertion here
+      # should be_a()
+      # should be_nil
+      # should ==
+      # should_not ==
+    end
+  end
+
 end
