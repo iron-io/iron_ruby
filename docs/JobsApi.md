@@ -4,23 +4,23 @@ All URIs are relative to *https://localhost:8080/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**groups_group_name_jobs_get**](JobsApi.md#groups_group_name_jobs_get) | **GET** /groups/{group_name}/jobs | Get job list by group name.
-[**groups_group_name_jobs_id_cancel_post**](JobsApi.md#groups_group_name_jobs_id_cancel_post) | **POST** /groups/{group_name}/jobs/{id}/cancel | Cancel a job.
-[**groups_group_name_jobs_id_delete**](JobsApi.md#groups_group_name_jobs_id_delete) | **DELETE** /groups/{group_name}/jobs/{id} | Delete the job.
-[**groups_group_name_jobs_id_error_post**](JobsApi.md#groups_group_name_jobs_id_error_post) | **POST** /groups/{group_name}/jobs/{id}/error | Mark job as failed.
-[**groups_group_name_jobs_id_get**](JobsApi.md#groups_group_name_jobs_id_get) | **GET** /groups/{group_name}/jobs/{id} | Gets job by id
-[**groups_group_name_jobs_id_log_get**](JobsApi.md#groups_group_name_jobs_id_log_get) | **GET** /groups/{group_name}/jobs/{id}/log | Get the log of a completed job.
-[**groups_group_name_jobs_id_log_post**](JobsApi.md#groups_group_name_jobs_id_log_post) | **POST** /groups/{group_name}/jobs/{id}/log | Send in a log for storage.
-[**groups_group_name_jobs_id_retry_post**](JobsApi.md#groups_group_name_jobs_id_retry_post) | **POST** /groups/{group_name}/jobs/{id}/retry | Retry a job.
-[**groups_group_name_jobs_id_start_post**](JobsApi.md#groups_group_name_jobs_id_start_post) | **POST** /groups/{group_name}/jobs/{id}/start | Mark job as started, ie: status = &#39;running&#39;
-[**groups_group_name_jobs_id_success_post**](JobsApi.md#groups_group_name_jobs_id_success_post) | **POST** /groups/{group_name}/jobs/{id}/success | Mark job as succeeded.
-[**groups_group_name_jobs_id_touch_post**](JobsApi.md#groups_group_name_jobs_id_touch_post) | **POST** /groups/{group_name}/jobs/{id}/touch | Extend job timeout.
-[**groups_group_name_jobs_post**](JobsApi.md#groups_group_name_jobs_post) | **POST** /groups/{group_name}/jobs | Enqueue Job
+[**groups_name_jobs_get**](JobsApi.md#groups_name_jobs_get) | **GET** /groups/{name}/jobs | Get job list by group name.
+[**groups_name_jobs_id_cancel_post**](JobsApi.md#groups_name_jobs_id_cancel_post) | **POST** /groups/{name}/jobs/{id}/cancel | Cancel a job.
+[**groups_name_jobs_id_delete**](JobsApi.md#groups_name_jobs_id_delete) | **DELETE** /groups/{name}/jobs/{id} | Delete the job.
+[**groups_name_jobs_id_error_post**](JobsApi.md#groups_name_jobs_id_error_post) | **POST** /groups/{name}/jobs/{id}/error | Mark job as failed.
+[**groups_name_jobs_id_get**](JobsApi.md#groups_name_jobs_id_get) | **GET** /groups/{name}/jobs/{id} | Gets job by id
+[**groups_name_jobs_id_log_get**](JobsApi.md#groups_name_jobs_id_log_get) | **GET** /groups/{name}/jobs/{id}/log | Get the log of a completed job.
+[**groups_name_jobs_id_log_post**](JobsApi.md#groups_name_jobs_id_log_post) | **POST** /groups/{name}/jobs/{id}/log | Send in a log for storage.
+[**groups_name_jobs_id_retry_post**](JobsApi.md#groups_name_jobs_id_retry_post) | **POST** /groups/{name}/jobs/{id}/retry | Retry a job.
+[**groups_name_jobs_id_start_post**](JobsApi.md#groups_name_jobs_id_start_post) | **POST** /groups/{name}/jobs/{id}/start | Mark job as started, ie: status = &#39;running&#39;
+[**groups_name_jobs_id_success_post**](JobsApi.md#groups_name_jobs_id_success_post) | **POST** /groups/{name}/jobs/{id}/success | Mark job as succeeded.
+[**groups_name_jobs_id_touch_post**](JobsApi.md#groups_name_jobs_id_touch_post) | **POST** /groups/{name}/jobs/{id}/touch | Extend job timeout.
+[**groups_name_jobs_post**](JobsApi.md#groups_name_jobs_post) | **POST** /groups/{name}/jobs | Enqueue Job
 [**jobs_get**](JobsApi.md#jobs_get) | **GET** /jobs | Get next job.
 
 
-# **groups_group_name_jobs_get**
-> JobsWrapper groups_group_name_jobs_get(group_name, opts)
+# **groups_name_jobs_get**
+> JobsWrapper groups_name_jobs_get(name, opts)
 
 Get job list by group name.
 
@@ -33,7 +33,7 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of jobs.
 
 opts = { 
   created_after: DateTime.parse("2013-10-20T19:20:30+01:00"), # DateTime | Will return jobs created after this time. In RFC3339 format.
@@ -42,10 +42,10 @@ opts = {
 
 begin
   #Get job list by group name.
-  result = api_instance.groups_group_name_jobs_get(group_name, opts)
+  result = api_instance.groups_name_jobs_get(name, opts)
   p result
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_get: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_get: #{e}"
 end
 ```
 
@@ -53,7 +53,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **created_after** | **DateTime**| Will return jobs created after this time. In RFC3339 format. | [optional] 
  **n** | **Integer**| Number of jobs to return. | [optional] 
 
@@ -72,8 +72,8 @@ No authorization required
 
 
 
-# **groups_group_name_jobs_id_cancel_post**
-> JobWrapper groups_group_name_jobs_id_cancel_post(group_name, id)
+# **groups_name_jobs_id_cancel_post**
+> JobWrapper groups_name_jobs_id_cancel_post(name, id)
 
 Cancel a job.
 
@@ -86,17 +86,17 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
 
 begin
   #Cancel a job.
-  result = api_instance.groups_group_name_jobs_id_cancel_post(group_name, id)
+  result = api_instance.groups_name_jobs_id_cancel_post(name, id)
   p result
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_id_cancel_post: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_id_cancel_post: #{e}"
 end
 ```
 
@@ -104,7 +104,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
 
 ### Return type
@@ -122,8 +122,8 @@ No authorization required
 
 
 
-# **groups_group_name_jobs_id_delete**
-> groups_group_name_jobs_id_delete(group_name, id)
+# **groups_name_jobs_id_delete**
+> groups_name_jobs_id_delete(name, id)
 
 Delete the job.
 
@@ -136,16 +136,16 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
 
 begin
   #Delete the job.
-  api_instance.groups_group_name_jobs_id_delete(group_name, id)
+  api_instance.groups_name_jobs_id_delete(name, id)
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_id_delete: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_id_delete: #{e}"
 end
 ```
 
@@ -153,7 +153,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
 
 ### Return type
@@ -171,8 +171,8 @@ No authorization required
 
 
 
-# **groups_group_name_jobs_id_error_post**
-> JobWrapper groups_group_name_jobs_id_error_post(group_name, id, body)
+# **groups_name_jobs_id_error_post**
+> JobWrapper groups_name_jobs_id_error_post(name, id, body)
 
 Mark job as failed.
 
@@ -185,7 +185,7 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
@@ -194,10 +194,10 @@ body = IronTitan::Complete.new # Complete |
 
 begin
   #Mark job as failed.
-  result = api_instance.groups_group_name_jobs_id_error_post(group_name, id, body)
+  result = api_instance.groups_name_jobs_id_error_post(name, id, body)
   p result
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_id_error_post: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_id_error_post: #{e}"
 end
 ```
 
@@ -205,7 +205,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
  **body** | [**Complete**](Complete.md)|  | 
 
@@ -224,8 +224,8 @@ No authorization required
 
 
 
-# **groups_group_name_jobs_id_get**
-> JobWrapper groups_group_name_jobs_id_get(group_name, id)
+# **groups_name_jobs_id_get**
+> JobWrapper groups_name_jobs_id_get(name, id)
 
 Gets job by id
 
@@ -238,17 +238,17 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
 
 begin
   #Gets job by id
-  result = api_instance.groups_group_name_jobs_id_get(group_name, id)
+  result = api_instance.groups_name_jobs_id_get(name, id)
   p result
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_id_get: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_id_get: #{e}"
 end
 ```
 
@@ -256,7 +256,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
 
 ### Return type
@@ -274,8 +274,8 @@ No authorization required
 
 
 
-# **groups_group_name_jobs_id_log_get**
-> String groups_group_name_jobs_id_log_get(group_name, id)
+# **groups_name_jobs_id_log_get**
+> String groups_name_jobs_id_log_get(name, id)
 
 Get the log of a completed job.
 
@@ -288,17 +288,17 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
 
 begin
   #Get the log of a completed job.
-  result = api_instance.groups_group_name_jobs_id_log_get(group_name, id)
+  result = api_instance.groups_name_jobs_id_log_get(name, id)
   p result
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_id_log_get: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_id_log_get: #{e}"
 end
 ```
 
@@ -306,7 +306,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
 
 ### Return type
@@ -324,8 +324,8 @@ No authorization required
 
 
 
-# **groups_group_name_jobs_id_log_post**
-> JobWrapper groups_group_name_jobs_id_log_post(group_name, id, log)
+# **groups_name_jobs_id_log_post**
+> JobWrapper groups_name_jobs_id_log_post(name, id, log)
 
 Send in a log for storage.
 
@@ -338,7 +338,7 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
@@ -347,10 +347,10 @@ log = File.new("/path/to/file.txt") # File | Output log for the job. Content-Typ
 
 begin
   #Send in a log for storage.
-  result = api_instance.groups_group_name_jobs_id_log_post(group_name, id, log)
+  result = api_instance.groups_name_jobs_id_log_post(name, id, log)
   p result
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_id_log_post: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_id_log_post: #{e}"
 end
 ```
 
@@ -358,7 +358,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
  **log** | **File**| Output log for the job. Content-Type must be \&quot;text/plain; charset=utf-8\&quot;. | 
 
@@ -377,8 +377,8 @@ No authorization required
 
 
 
-# **groups_group_name_jobs_id_retry_post**
-> JobWrapper groups_group_name_jobs_id_retry_post(group_name, id)
+# **groups_name_jobs_id_retry_post**
+> JobWrapper groups_name_jobs_id_retry_post(name, id)
 
 Retry a job.
 
@@ -391,17 +391,17 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
 
 begin
   #Retry a job.
-  result = api_instance.groups_group_name_jobs_id_retry_post(group_name, id)
+  result = api_instance.groups_name_jobs_id_retry_post(name, id)
   p result
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_id_retry_post: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_id_retry_post: #{e}"
 end
 ```
 
@@ -409,7 +409,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
 
 ### Return type
@@ -427,8 +427,8 @@ No authorization required
 
 
 
-# **groups_group_name_jobs_id_start_post**
-> JobWrapper groups_group_name_jobs_id_start_post(group_name, id, body)
+# **groups_name_jobs_id_start_post**
+> JobWrapper groups_name_jobs_id_start_post(name, id, body)
 
 Mark job as started, ie: status = 'running'
 
@@ -441,7 +441,7 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
@@ -450,10 +450,10 @@ body = IronTitan::Start.new # Start |
 
 begin
   #Mark job as started, ie: status = 'running'
-  result = api_instance.groups_group_name_jobs_id_start_post(group_name, id, body)
+  result = api_instance.groups_name_jobs_id_start_post(name, id, body)
   p result
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_id_start_post: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_id_start_post: #{e}"
 end
 ```
 
@@ -461,7 +461,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
  **body** | [**Start**](Start.md)|  | 
 
@@ -480,8 +480,8 @@ No authorization required
 
 
 
-# **groups_group_name_jobs_id_success_post**
-> JobWrapper groups_group_name_jobs_id_success_post(group_name, id, body)
+# **groups_name_jobs_id_success_post**
+> JobWrapper groups_name_jobs_id_success_post(name, id, body)
 
 Mark job as succeeded.
 
@@ -494,7 +494,7 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
@@ -503,10 +503,10 @@ body = IronTitan::Complete.new # Complete |
 
 begin
   #Mark job as succeeded.
-  result = api_instance.groups_group_name_jobs_id_success_post(group_name, id, body)
+  result = api_instance.groups_name_jobs_id_success_post(name, id, body)
   p result
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_id_success_post: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_id_success_post: #{e}"
 end
 ```
 
@@ -514,7 +514,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
  **body** | [**Complete**](Complete.md)|  | 
 
@@ -533,8 +533,8 @@ No authorization required
 
 
 
-# **groups_group_name_jobs_id_touch_post**
-> groups_group_name_jobs_id_touch_post(group_name, id)
+# **groups_name_jobs_id_touch_post**
+> groups_name_jobs_id_touch_post(name, id)
 
 Extend job timeout.
 
@@ -547,16 +547,16 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of jobs.
 
 id = "id_example" # String | Job id
 
 
 begin
   #Extend job timeout.
-  api_instance.groups_group_name_jobs_id_touch_post(group_name, id)
+  api_instance.groups_name_jobs_id_touch_post(name, id)
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_id_touch_post: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_id_touch_post: #{e}"
 end
 ```
 
@@ -564,7 +564,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
 
 ### Return type
@@ -582,8 +582,8 @@ No authorization required
 
 
 
-# **groups_group_name_jobs_post**
-> JobsWrapper groups_group_name_jobs_post(group_name, body)
+# **groups_name_jobs_post**
+> JobsWrapper groups_name_jobs_post(name, body)
 
 Enqueue Job
 
@@ -596,17 +596,17 @@ require 'iron_titan'
 
 api_instance = IronTitan::JobsApi.new
 
-group_name = "group_name_example" # String | name of the group.
+name = "name_example" # String | name of the group.
 
 body = IronTitan::NewJobsWrapper.new # NewJobsWrapper | Array of jobs to post.
 
 
 begin
   #Enqueue Job
-  result = api_instance.groups_group_name_jobs_post(group_name, body)
+  result = api_instance.groups_name_jobs_post(name, body)
   p result
 rescue IronTitan::ApiError => e
-  puts "Exception when calling JobsApi->groups_group_name_jobs_post: #{e}"
+  puts "Exception when calling JobsApi->groups_name_jobs_post: #{e}"
 end
 ```
 
@@ -614,7 +614,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | **String**| name of the group. | 
+ **name** | **String**| name of the group. | 
  **body** | [**NewJobsWrapper**](NewJobsWrapper.md)| Array of jobs to post. | 
 
 ### Return type
