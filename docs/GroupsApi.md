@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**groups_get**](GroupsApi.md#groups_get) | **GET** /groups | Get all group names.
 [**groups_name_get**](GroupsApi.md#groups_name_get) | **GET** /groups/{name} | Get information for a group.
+[**groups_name_put**](GroupsApi.md#groups_name_put) | **PUT** /groups/{name} | Create/update a job group.
 [**groups_post**](GroupsApi.md#groups_post) | **POST** /groups | Post new group
 
 
@@ -81,6 +82,53 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| name of the group. | 
+
+### Return type
+
+[**GroupWrapper**](GroupWrapper.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **groups_name_put**
+> GroupWrapper groups_name_put(body)
+
+Create/update a job group.
+
+You can set group level settings here. 
+
+### Example
+```ruby
+# load the gem
+require 'iron_titan'
+
+api_instance = IronTitan::GroupsApi.new
+
+body = IronTitan::GroupWrapper.new # GroupWrapper | Group to post.
+
+
+begin
+  #Create/update a job group.
+  result = api_instance.groups_name_put(body)
+  p result
+rescue IronTitan::ApiError => e
+  puts "Exception when calling GroupsApi->groups_name_put: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GroupWrapper**](GroupWrapper.md)| Group to post. | 
 
 ### Return type
 
