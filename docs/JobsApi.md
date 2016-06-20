@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**groups_name_jobs_id_log_get**](JobsApi.md#groups_name_jobs_id_log_get) | **GET** /groups/{name}/jobs/{id}/log | Get the log of a completed job.
 [**groups_name_jobs_id_log_post**](JobsApi.md#groups_name_jobs_id_log_post) | **POST** /groups/{name}/jobs/{id}/log | Send in a log for storage.
 [**groups_name_jobs_id_retry_post**](JobsApi.md#groups_name_jobs_id_retry_post) | **POST** /groups/{name}/jobs/{id}/retry | Retry a job.
-[**groups_name_jobs_id_start_post**](JobsApi.md#groups_name_jobs_id_start_post) | **POST** /groups/{name}/jobs/{id}/start | Mark job as started, ie: status = &#39;running&#39;
+[**groups_name_jobs_id_start_post**](JobsApi.md#groups_name_jobs_id_start_post) | **POST** /groups/{name}/jobs/{id}/start | Mark job as started, ie: status &#x3D; &#39;running&#39;
 [**groups_name_jobs_id_success_post**](JobsApi.md#groups_name_jobs_id_success_post) | **POST** /groups/{name}/jobs/{id}/success | Mark job as succeeded.
 [**groups_name_jobs_id_touch_post**](JobsApi.md#groups_name_jobs_id_touch_post) | **POST** /groups/{name}/jobs/{id}/touch | Extend job timeout.
 [**groups_name_jobs_post**](JobsApi.md#groups_name_jobs_post) | **POST** /groups/{name}/jobs | Enqueue Job
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -127,7 +127,7 @@ No authorization required
 
 Delete the job.
 
-Delete only succeeds if job status is one of `succeeded\n| failed | cancelled`. Cancel a job if it is another state and needs to\nbe deleted.  All information about the job, including the log, is\nirretrievably lost when this is invoked.\n
+Delete only succeeds if job status is one of `succeeded | failed | cancelled`. Cancel a job if it is another state and needs to be deleted.  All information about the job, including the log, is irretrievably lost when this is invoked. 
 
 ### Example
 ```ruby
@@ -164,7 +164,7 @@ nil (empty response body)
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -317,7 +317,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: text/plain
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
- **log** | **File**| Output log for the job. Content-Type must be \&quot;text/plain; charset=utf-8\&quot;. | 
+ **log** | **File**| Output log for the job. Content-Type must be \&quot;text/plain; charset&#x3D;utf-8\&quot;. | 
 
 ### Return type
 
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
@@ -382,7 +382,7 @@ No authorization required
 
 Retry a job.
 
-\"The /retry endpoint can be used to force a retry of jobs\nwith status succeeded or cancelled. It can also be used to retry jobs\nthat in the failed state, but whose max_retries field is 0. The retried\njob will continue to have max_retries = 0.\"\n
+\"The /retry endpoint can be used to force a retry of jobs with status succeeded or cancelled. It can also be used to retry jobs that in the failed state, but whose max_retries field is 0. The retried job will continue to have max_retries = 0.\" 
 
 ### Example
 ```ruby
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -473,7 +473,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -526,7 +526,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -538,7 +538,7 @@ No authorization required
 
 Extend job timeout.
 
-Consumers can sometimes take a while to run the task after accepting it.  An example is when the runner does not have the docker image locally, it can spend a significant time downloading the image.\nIf the timeout is small, the job may never get to run, or run but not be accepted by Titan. Consumers can touch the job before it times out. Titan will reset the timeout, giving the consumer another timeout seconds to run the job.\nTouch is only valid while the job is in a running state. If touch fails, the runner may stop running the job.\n
+Consumers can sometimes take a while to run the task after accepting it.  An example is when the runner does not have the docker image locally, it can spend a significant time downloading the image. If the timeout is small, the job may never get to run, or run but not be accepted by Titan. Consumers can touch the job before it times out. Titan will reset the timeout, giving the consumer another timeout seconds to run the job. Touch is only valid while the job is in a running state. If touch fails, the runner may stop running the job. 
 
 ### Example
 ```ruby
@@ -575,7 +575,7 @@ nil (empty response body)
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -587,7 +587,7 @@ No authorization required
 
 Enqueue Job
 
-Enqueues job(s). If any of the jobs is invalid, none of the jobs are enqueued.\n
+Enqueues job(s). If any of the jobs is invalid, none of the jobs are enqueued. 
 
 ### Example
 ```ruby
@@ -625,7 +625,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -673,7 +673,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json

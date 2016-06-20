@@ -5,7 +5,7 @@ All URIs are relative to *https://localhost:8080/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**groups_name_jobs_id_error_post**](RunnerApi.md#groups_name_jobs_id_error_post) | **POST** /groups/{name}/jobs/{id}/error | Mark job as failed.
-[**groups_name_jobs_id_start_post**](RunnerApi.md#groups_name_jobs_id_start_post) | **POST** /groups/{name}/jobs/{id}/start | Mark job as started, ie: status = &#39;running&#39;
+[**groups_name_jobs_id_start_post**](RunnerApi.md#groups_name_jobs_id_start_post) | **POST** /groups/{name}/jobs/{id}/start | Mark job as started, ie: status &#x3D; &#39;running&#39;
 [**groups_name_jobs_id_success_post**](RunnerApi.md#groups_name_jobs_id_success_post) | **POST** /groups/{name}/jobs/{id}/success | Mark job as succeeded.
 
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
