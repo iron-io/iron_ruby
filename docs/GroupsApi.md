@@ -99,7 +99,7 @@ No authorization required
 
 
 # **groups_name_put**
-> GroupWrapper groups_name_put(body)
+> GroupWrapper groups_name_put(name, body)
 
 Create/update a job group.
 
@@ -112,12 +112,14 @@ require 'iron_titan'
 
 api_instance = IronTitan::GroupsApi.new
 
+name = "name_example" # String | name of the group.
+
 body = IronTitan::GroupWrapper.new # GroupWrapper | Group to post.
 
 
 begin
   #Create/update a job group.
-  result = api_instance.groups_name_put(body)
+  result = api_instance.groups_name_put(name, body)
   p result
 rescue IronTitan::ApiError => e
   puts "Exception when calling GroupsApi->groups_name_put: #{e}"
@@ -128,6 +130,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **name** | **String**| name of the group. | 
  **body** | [**GroupWrapper**](GroupWrapper.md)| Group to post. | 
 
 ### Return type
