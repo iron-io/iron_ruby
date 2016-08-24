@@ -1,4 +1,4 @@
-# IronTitan::ErrorBody
+# IronWorker::ErrorBody
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# IronTitan::GroupsApi
+# IronWorker::GroupsApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**groups_get**](GroupsApi.md#groups_get) | **GET** /groups | Get all group names.
 [**groups_name_get**](GroupsApi.md#groups_name_get) | **GET** /groups/{name} | Get information for a group.
-[**groups_name_put**](GroupsApi.md#groups_name_put) | **PUT** /groups/{name} | Create/update a job group.
+[**groups_name_put**](GroupsApi.md#groups_name_put) | **PUT** /groups/{name} | Create/update a task group.
 [**groups_post**](GroupsApi.md#groups_post) | **POST** /groups | Post new group
 
 
@@ -20,15 +20,15 @@ Get a list of all the groups in the system.
 ### Example
 ```ruby
 # load the gem
-require 'iron_titan'
+require 'iron_ruby'
 
-api_instance = IronTitan::GroupsApi.new
+api_instance = IronWorker::GroupsApi.new
 
 begin
   #Get all group names.
   result = api_instance.groups_get
   p result
-rescue IronTitan::ApiError => e
+rescue IronWorker::ApiError => e
   puts "Exception when calling GroupsApi->groups_get: #{e}"
 end
 ```
@@ -56,14 +56,14 @@ No authorization required
 
 Get information for a group.
 
-This gives more details about a job group, such as statistics.
+This gives more details about a task group, such as statistics.
 
 ### Example
 ```ruby
 # load the gem
-require 'iron_titan'
+require 'iron_ruby'
 
-api_instance = IronTitan::GroupsApi.new
+api_instance = IronWorker::GroupsApi.new
 
 name = "name_example" # String | name of the group.
 
@@ -72,7 +72,7 @@ begin
   #Get information for a group.
   result = api_instance.groups_name_get(name)
   p result
-rescue IronTitan::ApiError => e
+rescue IronWorker::ApiError => e
   puts "Exception when calling GroupsApi->groups_name_get: #{e}"
 end
 ```
@@ -101,27 +101,27 @@ No authorization required
 # **groups_name_put**
 > GroupWrapper groups_name_put(name, body)
 
-Create/update a job group.
+Create/update a task group.
 
 You can set group level settings here. 
 
 ### Example
 ```ruby
 # load the gem
-require 'iron_titan'
+require 'iron_ruby'
 
-api_instance = IronTitan::GroupsApi.new
+api_instance = IronWorker::GroupsApi.new
 
 name = "name_example" # String | name of the group.
 
-body = IronTitan::GroupWrapper.new # GroupWrapper | Group to post.
+body = IronWorker::GroupWrapper.new # GroupWrapper | Group to post.
 
 
 begin
-  #Create/update a job group.
+  #Create/update a task group.
   result = api_instance.groups_name_put(name, body)
   p result
-rescue IronTitan::ApiError => e
+rescue IronWorker::ApiError => e
   puts "Exception when calling GroupsApi->groups_name_put: #{e}"
 end
 ```
@@ -153,23 +153,23 @@ No authorization required
 
 Post new group
 
-Insert a new job group
+Insert a new task group
 
 ### Example
 ```ruby
 # load the gem
-require 'iron_titan'
+require 'iron_ruby'
 
-api_instance = IronTitan::GroupsApi.new
+api_instance = IronWorker::GroupsApi.new
 
-body = IronTitan::GroupWrapper.new # GroupWrapper | Group to post.
+body = IronWorker::GroupWrapper.new # GroupWrapper | Group to post.
 
 
 begin
   #Post new group
   result = api_instance.groups_post(body)
   p result
-rescue IronTitan::ApiError => e
+rescue IronWorker::ApiError => e
   puts "Exception when calling GroupsApi->groups_post: #{e}"
 end
 ```

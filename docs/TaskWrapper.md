@@ -1,8 +1,8 @@
-# IronWorker::GroupWrapper
+# IronWorker::TaskWrapper
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**group** | [**Group**](Group.md) |  | 
+**task** | [**Task**](Task.md) |  | 
 
 

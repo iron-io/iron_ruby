@@ -1,4 +1,4 @@
-# IronTitan::GroupsWrapper
+# IronWorker::GroupsWrapper
 
 ## Properties
 Name | Type | Description | Notes

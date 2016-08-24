@@ -1,41 +1,41 @@
-# IronTitan::RunnerApi
+# IronWorker::RunnerApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**groups_name_jobs_id_error_post**](RunnerApi.md#groups_name_jobs_id_error_post) | **POST** /groups/{name}/jobs/{id}/error | Mark job as failed.
-[**groups_name_jobs_id_start_post**](RunnerApi.md#groups_name_jobs_id_start_post) | **POST** /groups/{name}/jobs/{id}/start | Mark job as started, ie: status &#x3D; &#39;running&#39;
-[**groups_name_jobs_id_success_post**](RunnerApi.md#groups_name_jobs_id_success_post) | **POST** /groups/{name}/jobs/{id}/success | Mark job as succeeded.
+[**groups_name_tasks_id_error_post**](RunnerApi.md#groups_name_tasks_id_error_post) | **POST** /groups/{name}/tasks/{id}/error | Mark task as failed.
+[**groups_name_tasks_id_start_post**](RunnerApi.md#groups_name_tasks_id_start_post) | **POST** /groups/{name}/tasks/{id}/start | Mark task as started, ie: status &#x3D; &#39;running&#39;
+[**groups_name_tasks_id_success_post**](RunnerApi.md#groups_name_tasks_id_success_post) | **POST** /groups/{name}/tasks/{id}/success | Mark task as succeeded.
 
 
-# **groups_name_jobs_id_error_post**
-> JobWrapper groups_name_jobs_id_error_post(name, id, body)
+# **groups_name_tasks_id_error_post**
+> TaskWrapper groups_name_tasks_id_error_post(name, id, body)
 
-Mark job as failed.
+Mark task as failed.
 
-Job is marked as failed if it was in a valid state. Job's `finished_at` time is initialized.
+Task is marked as failed if it was in a valid state. Task's `finished_at` time is initialized.
 
 ### Example
 ```ruby
 # load the gem
-require 'iron_titan'
+require 'iron_ruby'
 
-api_instance = IronTitan::RunnerApi.new
+api_instance = IronWorker::RunnerApi.new
 
-name = "name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of tasks.
 
-id = "id_example" # String | Job id
+id = "id_example" # String | Task id
 
-body = IronTitan::Complete.new # Complete | 
+body = IronWorker::Complete.new # Complete | 
 
 
 begin
-  #Mark job as failed.
-  result = api_instance.groups_name_jobs_id_error_post(name, id, body)
+  #Mark task as failed.
+  result = api_instance.groups_name_tasks_id_error_post(name, id, body)
   p result
-rescue IronTitan::ApiError => e
-  puts "Exception when calling RunnerApi->groups_name_jobs_id_error_post: #{e}"
+rescue IronWorker::ApiError => e
+  puts "Exception when calling RunnerApi->groups_name_tasks_id_error_post: #{e}"
 end
 ```
 
@@ -43,13 +43,13 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Name of group for this set of jobs. | 
- **id** | **String**| Job id | 
+ **name** | **String**| Name of group for this set of tasks. | 
+ **id** | **String**| Task id | 
  **body** | [**Complete**](Complete.md)|  | 
 
 ### Return type
 
-[**JobWrapper**](JobWrapper.md)
+[**TaskWrapper**](TaskWrapper.md)
 
 ### Authorization
 
@@ -62,33 +62,33 @@ No authorization required
 
 
 
-# **groups_name_jobs_id_start_post**
-> JobWrapper groups_name_jobs_id_start_post(name, id, body)
+# **groups_name_tasks_id_start_post**
+> TaskWrapper groups_name_tasks_id_start_post(name, id, body)
 
-Mark job as started, ie: status = 'running'
+Mark task as started, ie: status = 'running'
 
-Job status is changed to 'running' if it was in a valid state before. Job's `started_at` time is initialized.
+Task status is changed to 'running' if it was in a valid state before. Task's `started_at` time is initialized.
 
 ### Example
 ```ruby
 # load the gem
-require 'iron_titan'
+require 'iron_ruby'
 
-api_instance = IronTitan::RunnerApi.new
+api_instance = IronWorker::RunnerApi.new
 
-name = "name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of tasks.
 
-id = "id_example" # String | Job id
+id = "id_example" # String | Task id
 
-body = IronTitan::Start.new # Start | 
+body = IronWorker::Start.new # Start | 
 
 
 begin
-  #Mark job as started, ie: status = 'running'
-  result = api_instance.groups_name_jobs_id_start_post(name, id, body)
+  #Mark task as started, ie: status = 'running'
+  result = api_instance.groups_name_tasks_id_start_post(name, id, body)
   p result
-rescue IronTitan::ApiError => e
-  puts "Exception when calling RunnerApi->groups_name_jobs_id_start_post: #{e}"
+rescue IronWorker::ApiError => e
+  puts "Exception when calling RunnerApi->groups_name_tasks_id_start_post: #{e}"
 end
 ```
 
@@ -96,13 +96,13 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Name of group for this set of jobs. | 
- **id** | **String**| Job id | 
+ **name** | **String**| Name of group for this set of tasks. | 
+ **id** | **String**| Task id | 
  **body** | [**Start**](Start.md)|  | 
 
 ### Return type
 
-[**JobWrapper**](JobWrapper.md)
+[**TaskWrapper**](TaskWrapper.md)
 
 ### Authorization
 
@@ -115,33 +115,33 @@ No authorization required
 
 
 
-# **groups_name_jobs_id_success_post**
-> JobWrapper groups_name_jobs_id_success_post(name, id, body)
+# **groups_name_tasks_id_success_post**
+> TaskWrapper groups_name_tasks_id_success_post(name, id, body)
 
-Mark job as succeeded.
+Mark task as succeeded.
 
-Job status is changed to succeeded if it was in a valid state before. Job's `completed_at` time is initialized.
+Task status is changed to succeeded if it was in a valid state before. Task's `completed_at` time is initialized.
 
 ### Example
 ```ruby
 # load the gem
-require 'iron_titan'
+require 'iron_ruby'
 
-api_instance = IronTitan::RunnerApi.new
+api_instance = IronWorker::RunnerApi.new
 
-name = "name_example" # String | Name of group for this set of jobs.
+name = "name_example" # String | Name of group for this set of tasks.
 
-id = "id_example" # String | Job id
+id = "id_example" # String | Task id
 
-body = IronTitan::Complete.new # Complete | 
+body = IronWorker::Complete.new # Complete | 
 
 
 begin
-  #Mark job as succeeded.
-  result = api_instance.groups_name_jobs_id_success_post(name, id, body)
+  #Mark task as succeeded.
+  result = api_instance.groups_name_tasks_id_success_post(name, id, body)
   p result
-rescue IronTitan::ApiError => e
-  puts "Exception when calling RunnerApi->groups_name_jobs_id_success_post: #{e}"
+rescue IronWorker::ApiError => e
+  puts "Exception when calling RunnerApi->groups_name_tasks_id_success_post: #{e}"
 end
 ```
 
@@ -149,13 +149,13 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Name of group for this set of jobs. | 
- **id** | **String**| Job id | 
+ **name** | **String**| Name of group for this set of tasks. | 
+ **id** | **String**| Task id | 
  **body** | [**Complete**](Complete.md)|  | 
 
 ### Return type
 
-[**JobWrapper**](JobWrapper.md)
+[**TaskWrapper**](TaskWrapper.md)
 
 ### Authorization
 
