@@ -29,7 +29,7 @@ This will list tasks for a particular group.
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -84,7 +84,7 @@ Cancels a task in delayed, queued or running status. The worker may continue to 
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -134,7 +134,7 @@ Delete only succeeds if task status is one of `succeeded | failed | cancelled`. 
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -183,7 +183,7 @@ Task is marked as failed if it was in a valid state. Task's `finished_at` time i
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -236,7 +236,7 @@ Gets a task by id.
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -286,7 +286,7 @@ Retrieves the log from log storage.
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -336,7 +336,7 @@ Logs are sent after a task completes since they may be very large and the runner
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -389,7 +389,7 @@ Retry a task.
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -439,7 +439,7 @@ Task status is changed to 'running' if it was in a valid state before. Task's `s
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -492,7 +492,7 @@ Task status is changed to succeeded if it was in a valid state before. Task's `c
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -545,7 +545,7 @@ Consumers can sometimes take a while to run the task after accepting it.  An exa
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -594,7 +594,7 @@ Enqueues task(s). If any of the tasks is invalid, none of the tasks are enqueued
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 
@@ -644,7 +644,7 @@ Gets the next task in the queue, ready for processing. Titan may return <=n task
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::TasksApi.new
 

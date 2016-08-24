@@ -20,7 +20,7 @@ Get a list of all the groups in the system.
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::GroupsApi.new
 
@@ -61,7 +61,7 @@ This gives more details about a task group, such as statistics.
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::GroupsApi.new
 
@@ -108,7 +108,7 @@ You can set group level settings here.
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::GroupsApi.new
 
@@ -158,7 +158,7 @@ Insert a new task group
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::GroupsApi.new
 

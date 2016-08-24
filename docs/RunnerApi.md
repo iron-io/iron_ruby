@@ -19,7 +19,7 @@ Task is marked as failed if it was in a valid state. Task's `finished_at` time i
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::RunnerApi.new
 
@@ -72,7 +72,7 @@ Task status is changed to 'running' if it was in a valid state before. Task's `s
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::RunnerApi.new
 
@@ -125,7 +125,7 @@ Task status is changed to succeeded if it was in a valid state before. Task's `c
 ### Example
 ```ruby
 # load the gem
-require 'iron_ruby'
+require 'worker_ruby'
 
 api_instance = IronWorker::RunnerApi.new
 
